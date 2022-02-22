@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-import { Container, Row, Col, Image, ListGroup, Card, Button, Form } from "react-bootstrap"
+import { useSelector } from "react-redux"
+import { Container, Row, Col, Image, ListGroup } from "react-bootstrap"
 import Loader from "../components/Loader"
 import Message from "../components/Message"
 
@@ -41,7 +41,19 @@ const NewsItemScreen = ({ match }) => {
                   </ListGroup.Item>
 
                   <ListGroup.Item>{newsItem.publishedAt.substring(0, 10)}</ListGroup.Item>
-                  <ListGroup.Item>{newsItem.description}</ListGroup.Item>
+                  <ListGroup.Item>
+                    <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+                      description:
+                    </span>{" "}
+                    {newsItem.description}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    {" "}
+                    <span style={{ fontSize: "1rem", fontWeight: "bold" }}>
+                      content:
+                    </span>{" "}
+                    {newsItem.content}
+                  </ListGroup.Item>
                 </ListGroup>
               </Col>
             </Row>

@@ -1,3 +1,8 @@
+html,
+#root {
+  background-color: rgb(212, 211, 209);
+}
+
 .radio-form {
   padding-left: 10px;
 }

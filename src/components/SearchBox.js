@@ -4,7 +4,6 @@ import { Form, Button } from "react-bootstrap"
 const SearchBox = ({ history }) => {
   const [keyword, setKeyword] = useState("")
 
-  console.log(keyword)
   const submitHandler = (e) => {
     e.preventDefault()
     if (keyword.trim()) {
