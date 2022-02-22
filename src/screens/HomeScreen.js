@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Form, InputGroup, FormControl } from "react-bootstrap"
 import { Link, Route } from "react-router-dom"
 import NewsItem from "../components/NewsItem"
 import SearchBox from "../components/SearchBox"
@@ -13,17 +13,14 @@ const HomeScreen = ({ match }) => {
   const [category, setCategory] = useState("general")
 
   let keyword = match.params.keyword
-  console.log(keyword)
+
   const dispatch = useDispatch()
 
   const news = useSelector((state) => state.newsList)
 
-  console.log(news)
   const { loading, error, newsList } = news
-  console.log(newsList)
 
   useEffect(() => {
-    console.log("here")
     dispatch(listNews(category, keyword))
   }, [dispatch, keyword, category])
 
@@ -32,6 +29,73 @@ const HomeScreen = ({ match }) => {
       <Container>
         <h2>Latest news</h2>
         <Route render={({ history }) => <SearchBox history={history} />} />
+        <Row>
+          <Form
+            onChange={(e) => {
+              setCategory(e.target.value)
+              console.log(e.target.value)
+            }}
+          >
+            <div key={`inline-radio`} className='mb-3'>
+              <Form.Check
+                inline
+                label='general'
+                value='general'
+                name='category'
+                type='radio'
+                id={`inline-radio-1`}
+              />
+              <Form.Check
+                inline
+                label='sports'
+                value='sports'
+                name='category'
+                type='radio'
+                id={`inline-radio-2`}
+              />
+              <Form.Check
+                inline
+                label='business'
+                value='business'
+                name='category'
+                type='radio'
+                id={`inline-radio-3`}
+              />
+              <Form.Check
+                inline
+                label='entertainment'
+                value='entertainment'
+                name='category'
+                type='radio'
+                id={`inline-radio-3`}
+              />
+              <Form.Check
+                inline
+                label='health'
+                value='health'
+                name='category'
+                type='radio'
+                id={`inline-radio-3`}
+              />
+              <Form.Check
+                inline
+                label='science'
+                value='science'
+                name='category'
+                type='radio'
+                id={`inline-radio-3`}
+              />
+              <Form.Check
+                inline
+                label='technology'
+                value='technology'
+                name='category'
+                type='radio'
+                id={`inline-radio-3`}
+              />
+            </div>
+          </Form>
+        </Row>
         {loading ? (
           <Loader />
         ) : error ? (
