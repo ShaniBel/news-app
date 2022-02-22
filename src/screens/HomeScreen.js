@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Container, Row, Col, Form, InputGroup, FormControl } from "react-bootstrap"
-import { Link, Route } from "react-router-dom"
+import { Container, Row, Col, Form } from "react-bootstrap"
+import { Route } from "react-router-dom"
 import NewsItem from "../components/NewsItem"
 import SearchBox from "../components/SearchBox"
 import Message from "../components/Message"
@@ -27,17 +27,18 @@ const HomeScreen = ({ match }) => {
   return (
     <>
       <Container>
-        <h2>Latest news</h2>
+        <h2 className='my-3'>Latest news</h2>
         <Route render={({ history }) => <SearchBox history={history} />} />
         <Row>
           <Form
+            className='radio-form'
             onChange={(e) => {
               setCategory(e.target.value)
-              console.log(e.target.value)
             }}
           >
             <div key={`inline-radio`} className='mb-3'>
               <Form.Check
+                className='radio'
                 inline
                 label='general'
                 value='general'
@@ -46,6 +47,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-1`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='sports'
                 value='sports'
@@ -54,6 +56,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-2`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='business'
                 value='business'
@@ -62,6 +65,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-3`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='entertainment'
                 value='entertainment'
@@ -70,6 +74,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-3`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='health'
                 value='health'
@@ -78,6 +83,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-3`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='science'
                 value='science'
@@ -86,6 +92,7 @@ const HomeScreen = ({ match }) => {
                 id={`inline-radio-3`}
               />
               <Form.Check
+                className='radio'
                 inline
                 label='technology'
                 value='technology'
@@ -103,9 +110,9 @@ const HomeScreen = ({ match }) => {
         ) : (
           <>
             <Row>
-              {newsList.map((newsItem) => (
-                <Col key={newsItem.id} sm={12} md={6} lg={4} xl={4}>
-                  <NewsItem newsItem={newsItem} />
+              {newsList.map((newsItem, i) => (
+                <Col key={i} sm={12} md={6} lg={4} xl={4} className='my-2'>
+                  <NewsItem id={i} newsItem={newsItem} />
                 </Col>
               ))}
             </Row>

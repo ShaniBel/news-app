@@ -10,13 +10,11 @@ export const listNews =
   async (dispatch) => {
     try {
       dispatch({ type: NEWS_LIST_REQUEST })
-      console.log(keyword)
+
       const { data } = await axios.get(
         `https://newsapi.org/v2/top-headlines?q=${keyword}&category=${category}&apiKey=f7d45a699d404ca89d725fdd2e729dc9`
       )
-      console.log(
-        `https://newsapi.org/v2/top-headlines?q=ukraine&category=${category}&apiKey=f7d45a699d404ca89d725fdd2e729dc9`
-      )
+
       dispatch({ type: NEWS_LIST_SUCCESS, payload: data.articles })
     } catch (error) {
       dispatch({
